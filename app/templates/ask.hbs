@@ -1,0 +1,41 @@
+<div class="row h-screen">
+  <main role="main" class="col-md-10">
+    <div class="form-group {{if model.question.errors.title 'has-error'}}">
+      {{input value=model.question.title class="form-control" id="title-input" placeholder="Title"}}
+
+      {{#if model.question.errors.title}}
+        <div class="text-danger">
+          {{model.question.errors.title.firstObject.message}}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="form-group {{if model.question.errors.title 'has-error'}}">
+      <label for="title-input">Description</label>
+      {{textarea value=model.question.description class="form-control" id="description-input"}}
+
+      {{#if model.question.errors.title}}
+        <div class="text-danger">
+          {{model.question.errors.description.firstObject.message}}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="form-group" >
+      <label for="tags-input">Tags</label>
+      {{#tag-input
+        tags=this.model.tags
+        addTag=(action send "addTag")
+        removeTagAtIndex=(action send "removeTagAtIndex")
+        as |tag|
+      }}
+        {{tag}}
+      {{/tag-input}}
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" {{action "ask"}}>Ask</button>
+    {{#link-to "ask" class="btn btn-secondary"}}Cancel{{/link-to}}
+  </main>
+</div>
+
