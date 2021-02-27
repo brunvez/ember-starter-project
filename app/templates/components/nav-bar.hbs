@@ -4,6 +4,9 @@
     {{#link-to "dashboard" class="navbar-brand"}}Expert Advice{{/link-to}}
   </div>
   {{#navbar.content}}
+    <li class="nav-item">
+      {{#link-to "questions" class="nav-link"}}Questions{{/link-to}}
+    </li>
     {{#navbar.nav class="ml-auto" as |nav|}}
       {{#if currentSession.isAuthenticated}}
         {{#nav.dropdown as |dd|}}

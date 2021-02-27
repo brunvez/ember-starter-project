@@ -1,0 +1,33 @@
+<div class="row h-screen">
+  <main role="main" class="col-md-10">
+
+    <ul>
+      {{#each this.model as |question|}}
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">{{question.title}}</h5>
+          <p class="card-text">{{question.description}}</p>
+        </div>
+      </div>
+      {{/each}}
+    </ul>
+
+    <nav class="d-flex justify-content-center">
+      {{#let this.model.meta.pagination as |pagination| }}
+        <ul class="pagination">
+          <li class="page-item {{unless pagination.prev.number "disabled"}}">
+            {{#link-to "questions" (query-params page=pagination.prev.number) class="page-link"}}
+              Previous
+            {{/link-to}}
+          </li>
+          <li class="page-item {{unless pagination.next.number "disabled"}}">
+            {{#link-to "questions" (query-params page=pagination.next.number) class="page-link"}}
+              Next
+            {{/link-to}}
+          </li>
+        </ul>
+      {{/let}}
+    </nav>
+  </main>
+</div>
+
