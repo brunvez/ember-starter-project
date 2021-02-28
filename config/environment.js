@@ -49,7 +49,9 @@ module.exports = function(environment) {
   }
 
   if (environment === "production") {
-    // here you can enable a production-specific feature
+    ENV.serverURL = process.env.SERVER_URL;
+    ENV.webURL = process.env.WEB_URL;
+    ENV.webSocketURL = process.env.WEB_SOCKET_URL;
   }
 
   ENV.apiBaseURL = ENV.serverURL + "/" + ENV.apiNamespace;
