@@ -18,7 +18,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
       const { question } = this.controller.model;
       set(question, "tags", this.controller.model.tags)
       await question.save();
-      this.transitionTo("dashboard");
+      this.transitionTo("questions");
     },
     addTag(tag) {
       get(this.controller.model, "tags").pushObject(tag)
